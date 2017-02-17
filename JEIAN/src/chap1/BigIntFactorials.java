@@ -12,27 +12,28 @@ public class BigIntFactorials {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int input = 0;
+		while (input >= 0) {
+			input = getInput();
+			System.out.println(factorial(input));
+		}
+		// System.out.println(cache.toString());
+	}
+
+	private static BigInteger factorial(long n) {
+		// TODO Auto-generated method stub
+		try {
+			return cache.get((int) n);
+		} catch (IndexOutOfBoundsException e) {
+			cache.add(BigInteger.valueOf(n).multiply(factorial(n - 1)));
+			return cache.get((int) n);
+		}
+	}
+
+	private static int getInput() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("What number do you want to factorial: ");
 		int n = input.nextInt();
-		input.close();
-		System.out.println(factorial(n));
-		System.out.println(cache.toString());
+		return n;
 	}
-
-	private static BigInteger factorial(int n) {
-		// TODO Auto-generated method stub
-		try {
-			return cache.get(n);
-		} catch (IndexOutOfBoundsException e) {
-			for(int i = cache.size(); i <= n+1; i++) {
-				BigInteger tmp = new BigInteger()
-				cache.add(new BigInteger(cache.get(i).multiply(new BigInteger(i + 1))));
-			}
-		}
-		
-	}
-	
-	
-
 }
