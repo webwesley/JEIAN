@@ -20,7 +20,7 @@ public class FileCopy {
 		File to_file = new File(to_name);
 
 		if (!from_file.exists()) {
-			abort("no such cource file: " + from_name);
+			abort("no such scource file: " + from_name);
 		}
 		if (!from_file.isFile()) {
 			abort("can't copy directory " + from_name);
@@ -36,7 +36,7 @@ public class FileCopy {
 			if(!to_file.canWrite()) {
 				abort("destinaton file is unwritable: " + to_name);
 			}
-			System.out.println("Overwrite existing file " + to_file.getName() + "? (Y/N): ");
+			System.out.print("Overwrite existing file " + to_file.getName() + "? (Y/N): ");
 			System.out.flush();
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			String response = in.readLine();
