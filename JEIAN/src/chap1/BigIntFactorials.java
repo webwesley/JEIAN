@@ -23,13 +23,13 @@ public class BigIntFactorials {
 		// System.out.println(cache.toString());
 	}
 
-	public static synchronized BigInteger factorial(long n) {
+	private static synchronized BigInteger factorial(int n) {
 		// TODO Auto-generated method stub
 		try {
-			return cache.get((int) n);
+			return cache.get(n);
 		} catch (IndexOutOfBoundsException e) {
 			cache.add(BigInteger.valueOf(n).multiply(factorial(n - 1)));
-			return cache.get((int) n);
+			return cache.get(n);
 
 		}
 
@@ -39,5 +39,10 @@ public class BigIntFactorials {
 		System.out.print("What number do you want to factorial: ");
 		int n = input.nextInt();
 		return n;
+	}
+	
+	public static ArrayList<BigInteger> getCache(int n){
+		factorial(n);
+		return cache;
 	}
 }
